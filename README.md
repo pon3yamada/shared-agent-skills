@@ -23,6 +23,7 @@ Cursor Agent 向けのスキルを、クライアント・協力者と共有す�
 # 1. リポジトリを clone（URL は山田から共有されたものに置き換え）
 git clone https://github.com/pon3yamada/shared-cursor-skills.git
 cd shared-cursor-skills
+# ローカル作業場所の例: ~/ai-workbench/shared/cursor-skills
 
 # 2. 個人スキルとして配置（全プロジェクトで使える）
 mkdir -p ~/.cursor/skills
@@ -45,7 +46,7 @@ cp -r grill-me ~/.cursor/skills/
 
 ```bash
 mkdir -p .cursor/skills
-cp -r /path/to/shared-cursor-skills/grill-me .cursor/skills/
+cp -r /path/to/cursor-skills/grill-me .cursor/skills/
 ```
 
 ## 使い方
@@ -77,6 +78,7 @@ cp -r grill-me ~/.cursor/skills/
 
 ## 共有・運用（山田向けメモ）
 
-- このリポジトリは `client-work` とは別管理にする（クライアントデータと混ぜない）
+- ローカル置き場: `ai-workbench/shared/cursor-skills`（他人に渡す用ホーム `shared/` 配下）
+- このリポジトリは `client-work` や ABiL 案件リポとは別管理にする（クライアントデータと混ぜない）
 - GitHub は **Private リポジトリ + Collaborator 招待** が無難（grill-me 自体に機密はないが、将来追加するスキル用）
 - スキルを追加するときは `/<skill-name>/SKILL.md` を増やし、上の表を更新する
