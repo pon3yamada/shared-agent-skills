@@ -1,4 +1,4 @@
-# shared-cursor-skills
+# shared-agent-skills
 
 このリポジトリは Claude Code / Cursor Agent 用スキルの配布パッケージです。ここでのエージェントの主な仕事は、clone した人が自分の環境にスキルを配置するのを手伝うことです。
 

@@ -28,7 +28,7 @@ Claude Code / Cursor Agent で使えるスキルを、チームメンバー・�
 Claude Code または Cursor（Agent モード）のチャットに、以下をまるごとコピーして貼り付けて送信してください。AI が配置先を確認してくるので、チャットで回答すれば配置まで完了します。
 
 ```
-https://github.com/pon3yamada/shared-cursor-skills.git を clone して、grill-me スキルを配置してください。Git が入っていなければ先にインストールしてください。
+https://github.com/pon3yamada/shared-agent-skills.git を clone して、grill-me スキルを配置してください。Git が入っていなければ先にインストールしてください。
 
 配置する前に、配置先について私に確認してください:
 - ユーザースキル（~/.claude/skills/grill-me/）に置く — どのプロジェクトからでも使いたい場合（推奨）
@@ -41,8 +41,8 @@ https://github.com/pon3yamada/shared-cursor-skills.git を clone して、grill-
 
 ```bash
 # 1. リポジトリを clone（URL は山田から共有されたものに置き換え）
-git clone https://github.com/pon3yamada/shared-cursor-skills.git
-cd shared-cursor-skills
+git clone https://github.com/pon3yamada/shared-agent-skills.git
+cd shared-agent-skills
 
 # 2. ユーザースキルとして配置（推奨）
 mkdir -p ~/.claude/skills
@@ -59,7 +59,7 @@ ZIP で渡された場合は、展開後に手順2以降を実行する。
 
 ```bash
 mkdir -p .claude/skills
-cp -r /path/to/shared-cursor-skills/grill-me .claude/skills/
+cp -r /path/to/shared-agent-skills/grill-me .claude/skills/
 ```
 
 ## 使い方
@@ -84,7 +84,7 @@ Agent が1問ずつ質問し、推奨案付きで論点を整理する。実装�
 方法 B で入れた場合:
 
 ```bash
-cd shared-cursor-skills
+cd shared-agent-skills
 git pull
 cp -r grill-me ~/.claude/skills/
 ```
@@ -93,7 +93,7 @@ cp -r grill-me ~/.claude/skills/
 
 ## 共有・運用（山田向けメモ）
 
-- ローカル置き場: `ai-workbench/shared/cursor-skills`（他人に渡す用ホーム `shared/` 配下）
+- ローカル置き場: `ai-workbench/shared/agent-skills`（他人に渡す用ホーム `shared/` 配下）
 - マスターは `~/.claude/skills/grill-me/SKILL.md`（山田のユーザースキル）。更新したらこのリポジトリにコピーして commit → push する
 - `CLAUDE.md` と `AGENTS.md` は同内容（Claude Code 用と Cursor 用）。clone した人がこのリポジトリをエージェントで開いたときに「配置先を確認してから配置する」動作を仕込んである。片方を直したらもう片方も同期する
 - このリポジトリは `client-work` や ABiL 案件リポとは別管理にする（クライアントデータと混ぜない）
