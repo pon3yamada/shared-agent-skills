@@ -97,5 +97,5 @@ cp -r grill-me ~/.claude/skills/
 - マスターは `~/.claude/skills/grill-me/SKILL.md`（山田のユーザースキル）。更新したらこのリポジトリにコピーして commit → push する
 - `CLAUDE.md` と `AGENTS.md` は同内容（Claude Code 用と Cursor 用）。clone した人がこのリポジトリをエージェントで開いたときに「配置先を確認してから配置する」動作を仕込んである。片方を直したらもう片方も同期する
 - このリポジトリは `client-work` や ABiL 案件リポとは別管理にする（クライアントデータと混ぜない）
-- GitHub は **Private リポジトリ + Collaborator 招待** が無難（grill-me 自体に機密はないが、将来追加するスキル用）
+- GitHub は **Public で運用**（grill-me に機密はなく、共有相手が clone するだけで使えるようにするため）。機密を含むスキルを将来追加する場合は、このリポジトリではなく別の Private リポジトリに分ける
 - スキルを追加するときは `/<skill-name>/SKILL.md` を増やし、上の表を更新する
