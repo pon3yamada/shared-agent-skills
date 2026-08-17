@@ -94,7 +94,8 @@ cp -r grill-me ~/.claude/skills/
 ## 共有・運用（山田向けメモ）
 
 - ローカル置き場: `ai-workbench/shared/agent-skills`（他人に渡す用ホーム `shared/` 配下）
-- マスターは `~/.claude/skills/grill-me/SKILL.md`（山田のユーザースキル）。更新したらこのリポジトリにコピーして commit → push する
+- マスターは `ai-workbench/.claude/skills/grill-me/SKILL.md`（ルートリポで git 管理。`~/.claude/skills` はそこへの symlink）。更新したらこのリポジトリにコピーして commit → push する
+- **昇格の型（2026-08-17）**: 個人スキルは `ai-workbench/.claude/skills/` で育て、**配布可能になったものだけ**をここへコピーして公開する（`ideas/ → domains/ → own repo` と同じパイプライン）。絶対パス参照・社内ルール・社内システム依存が残るスキルは昇格させない — このリポは Public なので、混ぜると即公開事故になる
 - `CLAUDE.md` と `AGENTS.md` は同内容（Claude Code 用と Cursor 用）。clone した人がこのリポジトリをエージェントで開いたときに「配置先を確認してから配置する」動作を仕込んである。片方を直したらもう片方も同期する
 - このリポジトリはクライアント案件フォルダ（`work/<案件>_project/`）や ABiL 案件リポとは別管理にする（クライアントデータと混ぜない）
 - GitHub は **Public で運用**（grill-me に機密はなく、共有相手が clone するだけで使えるようにするため）。機密を含むスキルを将来追加する場合は、このリポジトリではなく別の Private リポジトリに分ける
