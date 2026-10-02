@@ -1,102 +1,82 @@
-# AI Agent 共有スキル
+# shared-agent-skills — Claude Code はじめてセット
 
-Claude Code / Cursor Agent で使えるスキルを、チームメンバー・クライアント・協力者と共有するためのリポジトリ。
+Claude Code を使い始める人向けに、**よく使うスキル**と**最初にやっておく設定**をまとめたセット。AI にプロンプトを1つ貼るだけで、環境が整う。
 
-## 含まれるスキル
+Cursor でも同じスキルが使える（Cursor も `~/.claude/skills/` を読むため）。
 
-| スキル | 用途 | チャットでの呼び方 |
-|--------|------|-------------------|
-| [grill-me](./grill-me/) | 計画・設計を1問ずつ深掘りし、実装前に論点を整理する | 「グリルして」「計画を詰めて」「要件を深掘りして」 |
+## 入っているもの
 
-## 配置先について（ユーザースキルを推奨）
+### スキル
 
-スキルの置き場所は2種類ありますが、**ユーザースキル（`~/.claude/skills/`）を推奨**します。
+| スキル | 何をしてくれるか | 話しかけ方の例 |
+|---|---|---|
+| [grill-me](skills/grill-me/) | 計画やアイデアを1問ずつ深掘りし、抜けている論点を一緒に埋める | 「この計画をグリルして」 |
+| [writing-proposals](skills/writing-proposals/) | 誰かに出す提案書を、対話で材料を集めてから書く | 「〇〇を提案したい。提案文を作って」 |
+| [plain-writing](skills/plain-writing/) | 文章を、結論から先に読みやすく直す | 「この文面を伝わる文章にして」 |
+| [meeting-notes](skills/meeting-notes/) | 打ち合わせの文字起こしから議事メモを作る | 「この文字起こしで議事メモ作って」 |
 
-- **ユーザースキル（推奨）**: ホームフォルダの `~/.claude/skills/` に置く。どのプロジェクトからでも呼び出せる。grill-me は企画・文章作成・業務整理など汎用的に使えるスキルなので、こちらが向いている
-- **プロジェクトスキル**: 特定プロジェクトのルートの `.claude/skills/` に置く。そのプロジェクトだけで使う・リポジトリごとチームで共有する場合はこちら
+### 初期設定
 
-なお **Cursor も `.claude/skills/` をスキルとして認識する**ため、Claude Code / Cursor どちらのユーザーも同じ配置でOKです（`~/.cursor/skills/` を分けて作る必要はありません）。
+- **全体ルール**（`~/.claude/CLAUDE.md`）: 日本語で答える・専門用語に説明を添える・消す前に確認する、など初心者向けの振る舞い。セットアップのときに AI がいくつか質問し、その人用に作る（[雛形](setup/CLAUDE.md.template)）
+- **Git と GitHub CLI**: 入っているかを確かめ、無ければ入れてログインまで案内する
+- **はじめてガイド**: [docs/getting-started.md](docs/getting-started.md) — Cowork との違い、作業フォルダの作り方、困ったときの頼み方
+- **追加セット**: [docs/whisper-addon.md](docs/whisper-addon.md) — 録音ファイルから直接文字起こしできるようにする（慣れてから）
 
-## インストール
+## インストール（Mac）
 
-### 前提
-
-- [Claude Code](https://claude.com/claude-code) または [Cursor](https://cursor.com/) がインストール済みであること
-
-### 方法 A: AI にやってもらう（推奨）
-
-Claude Code または Cursor（Agent モード）のチャットに、以下をまるごとコピーして貼り付けて送信してください。AI が配置先を確認してくるので、チャットで回答すれば配置まで完了します。
+Claude Code を開き、次をまるごとコピーして送信する。あとは AI の質問に答えていけば終わる（15分ほど）。
 
 ```
-https://github.com/pon3yamada/shared-agent-skills.git を clone して、grill-me スキルを配置してください。Git が入っていなければ先にインストールしてください。
+https://github.com/pon3yamada/shared-agent-skills.git を ~/shared-agent-skills に clone してください。
+clone できたら ~/shared-agent-skills/AGENTS.md を読み、「はじめてセットアップ」の手順どおりに、Step 1 から順に進めてください。
 
-配置する前に、配置先について私に確認してください:
-- ユーザースキル（~/.claude/skills/grill-me/）に置く — どのプロジェクトからでも使いたい場合（推奨）
-- プロジェクトスキル（対象プロジェクトの .claude/skills/grill-me/）に置く — そのプロジェクトだけで使う場合
-
-配置が終わったら、新しいチャットで「グリルして」と話しかけて動作確認できることを教えてください。
+私は Claude Code を使うのが初めてです。質問は1つずつ、おすすめを添えてください。
+パスワードが必要なコマンドは自分で実行せず、ターミナルに貼るコマンドとして私に渡してください。
 ```
 
-### 方法 B: 手動で入れる
+- `git` が入っていない Mac では、clone のときに「コマンドラインデベロッパツールをインストールしますか？」という画面が出る。「インストール」を押し、終わったらもう一度同じプロンプトを送る
+- 終わったら、**新しい会話**で「この計画をグリルして」と話しかけると試せる
+
+### 手で入れる場合
 
 ```bash
-# 1. リポジトリを clone（URL は山田から共有されたものに置き換え）
-git clone https://github.com/pon3yamada/shared-agent-skills.git
-cd shared-agent-skills
-
-# 2. ユーザースキルとして配置（推奨）
-mkdir -p ~/.claude/skills
-cp -r grill-me ~/.claude/skills/
-
-# 3. Claude Code / Cursor を再起動するか、新しいチャットを開く
+git clone https://github.com/pon3yamada/shared-agent-skills.git ~/shared-agent-skills
+bash ~/shared-agent-skills/setup/install.sh
+cp ~/shared-agent-skills/setup/CLAUDE.md.template ~/.claude/CLAUDE.md   # 既にあるなら上書きしないこと
 ```
 
-ZIP で渡された場合は、展開後に手順2以降を実行する。
+`~/.claude/CLAUDE.md` の `{{…}}` は自分で書き換える。
 
-### 方法 C: 特定プロジェクトだけで使う
+## 更新
 
-そのプロジェクトのルートに `.claude/skills/` を作り、そこにコピーする。
+Claude Code に「スキルを更新して」と頼む。中身は次の2行:
 
 ```bash
-mkdir -p .claude/skills
-cp -r /path/to/shared-agent-skills/grill-me .claude/skills/
+git -C ~/shared-agent-skills pull --ff-only
+bash ~/shared-agent-skills/setup/install.sh
 ```
 
-## 使い方
+スキルは `~/.claude/skills/` に**リンク**で入っているので、`git pull` するだけで最新になる（`install.sh` は新しく増えたスキルを足すため）。
 
-1. Claude Code または Cursor（Agent モード）のチャットを開く
-2. 詰めたい計画・設計・アイデアを書く
-3. 末尾に「グリルして」と付ける
+## 自分用に育てたくなったら
 
-例:
+- 自分専用のスキル・設定は `~/.claude/skills/` や `~/.claude/CLAUDE.md` に置く。**`~/shared-agent-skills` の中は書き換えない**（更新のときにぶつかる）
+- 配られたスキルを改造したいときは、このリポジトリを自分の GitHub にフォークして切り替える。**フォークは公開になる**ので、仕事の情報や人名は書かない。自分だけのものは非公開のリポジトリへ
 
-```
-ELC長潟の口コミ誘導フローをこう考えています。
-（計画の概要を書く）
+---
 
-この計画をグリルして。
-```
+## 配布元のメモ（山田向け）
 
-Agent が1問ずつ質問し、推奨案付きで論点を整理する。実装やファイル作成は行わない。
+- ローカル置き場: `ai-workbench/shared/agent-skills`。GitHub は **Public**。機密・社内ルール・社内システム依存を含むものは入れない
+- **スキルの出どころ**:
 
-## 更新の取り込み
+  | 配布版 | 元にしたスキル（`ai-workbench/.claude/skills/`） | 関係 |
+  |---|---|---|
+  | grill-me | grill-me | 同じもの。元を直したら、ここへコピーして commit → push |
+  | writing-proposals | writing-proposals | 社内文章ルールへの参照を外した版。以後はこちらが正本 |
+  | plain-writing | 社内文章ルールのスキル | 社名・社内向けの記述を外し、ルールを書き直した汎用版。以後はこちらが正本 |
+  | meeting-notes | mtg-minutes | Notion 反映・Drive 受信箱・リポ構成への依存を外した簡易版。以後はこちらが正本 |
 
-方法 B で入れた場合:
-
-```bash
-cd shared-agent-skills
-git pull
-cp -r grill-me ~/.claude/skills/
-```
-
-方法 A で入れた場合は、clone 済みのフォルダを AI に伝えて「最新化して配置し直して」と頼めばよい。
-
-## 共有・運用（山田向けメモ）
-
-- ローカル置き場: `ai-workbench/shared/agent-skills`（他人に渡す用ホーム `shared/` 配下）
-- マスターは `ai-workbench/.claude/skills/grill-me/SKILL.md`（ルートリポで git 管理。`~/.claude/skills` はそこへの symlink）。更新したらこのリポジトリにコピーして commit → push する
-- **昇格の型（2026-08-17）**: 個人スキルは `ai-workbench/.claude/skills/` で育て、**配布可能になったものだけ**をここへコピーして公開する（`ideas/ → domains/ → own repo` と同じパイプライン）。絶対パス参照・社内ルール・社内システム依存が残るスキルは昇格させない — このリポは Public なので、混ぜると即公開事故になる
-- `CLAUDE.md` と `AGENTS.md` は同内容（Claude Code 用と Cursor 用）。clone した人がこのリポジトリをエージェントで開いたときに「配置先を確認してから配置する」動作を仕込んである。片方を直したらもう片方も同期する
-- このリポジトリはクライアント案件フォルダ（`work/<案件>_project/`）や ABiL 案件リポとは別管理にする（クライアントデータと混ぜない）
-- GitHub は **Public で運用**（grill-me に機密はなく、共有相手が clone するだけで使えるようにするため）。機密を含むスキルを将来追加する場合は、このリポジトリではなく別の Private リポジトリに分ける
-- スキルを追加するときは `/<skill-name>/SKILL.md` を増やし、上の表を更新する
+- 元と配布版のずれは機械で見張っていない（2026-10-02 決定）。元を改善したら、気づいたときに手で反映する
+- スキルを足すときは `skills/<名前>/SKILL.md` を作り、上の表と「入っているもの」の表を更新する。`install.sh` は `skills/*/SKILL.md` を自動で拾う
+- `CLAUDE.md` は `@AGENTS.md` を読み込むだけ。エージェントへの指示は `AGENTS.md` に書く
